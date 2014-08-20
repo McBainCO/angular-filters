@@ -1,19 +1,14 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module("currencyApp", []);
 
-function FirstController($scope, Data) {
-  @scope.data = Data;
-}
+myApp.controller('currencyCtrl',['$scope', function($scope){
+  $scope.amount = 1234.56
+}]);
 
-myApp.factory('Data', function(){
-  return {message: "I'm data from a service"}
-});
-
-function SecondController($scope, Data) {
-  @scope.data = Data;
-}
-
-myApp.filter('reverse', function(data){
-  return function (text) {
-    return text.split("").reverse().join("")+ " " + Data.message;
-  }
-});
+myApp.filter('myCurrency', ['$filter', function($filter){
+  return function(input) {
+    if(input % 1 == 0) {
+      input = input.toFixed(0);
+    }
+    return '$'+ input;
+  };
+}]);

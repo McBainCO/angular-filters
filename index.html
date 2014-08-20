@@ -6,22 +6,16 @@
 </head>
 <body>
 
-<div ng-app="">
+<div ng-app="currencyApp">
 
-    <div ng-controller="FirstController">
-        <input type="text" ng-model="data.message">
+    <div ng-controller="currencyCtrl">
+        <input type="number" ng-model="amount">
+        default currency symbol ($): <span>{{amount | currency}}</span>
+        custom currency identifier ($): <span>{{amount | currency: "USD$"}}</span>
+        number <span>{{amount | number : 2}}</span>
+        custom filter currency <span>{{amount | myCurrency}}</span>
+        </div>
 
-        <h1>{{data.message}}</h1>
-
-    </div>
-
-
-    <div ng-controller="SecondController">
-        <h1>{{data.message | uppercase}}</h1>
-        <h1>{{data.message | reverse}}</h1>
-    </div>
-
-</div>
 
 
 </body>
